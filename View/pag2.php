@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../Style/icon.png" type="image/x-icon">
 </head>
 
 <body>
