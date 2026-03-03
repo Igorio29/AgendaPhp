@@ -17,7 +17,7 @@
         <?php
         include("../../conect.php");
         $id = $_GET['Id'];
-        $sql = "SELECT * FROM contatos WHERE id=$id";
+        $sql = "SELECT * FROM TAB_contatos WHERE id=$id";
         $result = $conn->query($sql);
         $i = $result->fetch_assoc();
         ?>

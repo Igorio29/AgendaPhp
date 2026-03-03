@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login do Sistema</title>
+    <title>Registro</title>
     <style>
         body {
             margin: 0;
@@ -16,16 +15,16 @@
             align-items: center;
         }
 
-        .login-container {
+        .registro-container {
             background: black;
             color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            width: 300px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+            width: 320px;
         }
 
-        .login-container h2 {
+        .registro-container h2 {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -57,7 +56,7 @@
             width: 100%;
             padding: 10px;
             border: none;
-            background: rgb(0, 104, 201);
+            background: #4a90e2;
             color: white;
             font-size: 16px;
             border-radius: 5px;
@@ -65,7 +64,7 @@
         }
 
         button:hover {
-            background: rgb(0, 32, 65);
+            background: #357abd;
         }
 
         .footer {
@@ -75,55 +74,59 @@
             color: #666;
         }
 
-        .registro-link {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-        .registro{
-            color: white;
-            font-size: 15px;
+        .link-login {
+            text-align: center;
+            margin-top: 10px;
         }
 
-        .registro a{
+        .link-login a {
             text-decoration: none;
             color: #4a90e2;
+            font-size: 14px;
         }
-        .registro a:hover{
-            text-decoration: none;
-            color:rgb(4, 97, 202);
+
+        .link-login a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="login-container">
-        <h2>Login</h2>
+<div class="registro-container">
+    <h2>Registro</h2>
 
-        <form action="../controllers/login/login.php" method="POST">
-            <div class="form-group">
-                <label for="email">Usuário</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" required>
-            </div>
-
-            <button type="submit">Entrar</button>
-        </form>
-
-        <div class="footer">
-            Sistema de Login <br>
-            <div class="registro"> 
-                Não tem conta?
-                <a href="./RegistroUsuario/index.php" class="cadastrar">Registre aqui</a>
-            </div>
+    <form action="registro.php" method="POST">
+        <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" name="usuario" required>
         </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmar">Confirmar Senha</label>
+            <input type="password" id="confirmar" name="confirmar" required>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div class="link-login">
+        <a href="../index.php">Já tem conta? Fazer login</a>
     </div>
 
-</body>
+    <div class="footer">
+        Sistema de Cadastro
+    </div>
+</div>
 
+</body>
 </html>

@@ -18,10 +18,10 @@ if ($nome) {
     $limite = 10;
     $offset = ($pagina - 1) * $limite;
 
-    $sql = "SELECT * FROM contatos LIMIT $limite OFFSET $offset";
+    $sql = "SELECT * FROM TAB_contatos LIMIT $limite OFFSET $offset";
 
     // contar total de registros
-    $resultTotal = $conn->query("SELECT COUNT(*) as total FROM contatos");
+    $resultTotal = $conn->query("SELECT COUNT(*) as total FROM TAB_contatos");
     $total = $resultTotal->fetch_assoc()['total'];
     $totalPaginas = ceil($total / $limite);
 }
