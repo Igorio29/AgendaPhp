@@ -1,6 +1,6 @@
 
 <?php
-    include ("../conect.php");
+    include ("../../conect.php");
 ?>
 
 <?php
@@ -21,7 +21,7 @@
             $sqladd = "INSERT INTO contatos VALUES(NULL,'$n', '$t','$d')";
             $conn->query($sqladd);
             
-        header("Location:" . "../view/index.php");
+        header("Location:" . "../../View/Contatos/index.php");
     }
 
 ?>

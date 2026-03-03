@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style/style.css">
     <link rel="shortcut icon" href="../Style/icon.png" type="image/x-icon">
 </head>
 
 <body>
-
+    <button onclick="history.back()" class="back"><i class="fa-solid fa-backward"></i></button>
     <div class="container-form">
         <h1>Editar</h1>
-
         <?php
-        include("../conect.php");
+        include("../../conect.php");
         $id = $_GET['Id'];
         $sql = "SELECT * FROM contatos WHERE id=$id";
         $result = $conn->query($sql);
         $i = $result->fetch_assoc();
         ?>
         <hr>
-        <form action="../controllers/editarContatos.php" method="POST">
+        <form action="../../controllers/contatos/editarContatos.php" method="POST">
 
             <div class="campo">
                 <label for="nome">Nome:</label>

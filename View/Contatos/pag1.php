@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style/style.css">
     <link rel="shortcut icon" href="../Style/icon.png" type="image/x-icon">
 </head>
 <body>
 
+        <button onclick="history.back()" class="back"><i class="fa-solid fa-backward"></i></i></button>
+    
     <div class="container-form">
         <h1 class="Titulo">Cadastro</h1>
         <hr>
-        <form action="../controllers/cadastroContatos.php" method="POST" class="formulario">
+        <form action="../../controllers/contatos/cadastroContatos.php" method="POST" class="formulario">
             
             <div class="campo">
                 <label for="nome">Nome:</label>
