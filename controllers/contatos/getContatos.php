@@ -1,7 +1,6 @@
 
 <?php
-include "../conect.php";
-
+include "../../conect.php";
 
 $sql = "SELECT * FROM contatos";
 $result = $conn->query($sql);

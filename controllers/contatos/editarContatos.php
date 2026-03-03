@@ -1,6 +1,6 @@
 
 <?php
-    include ("../conect.php");
+    include ("../../conect.php");
 
     $dado = $_POST;
     if(!empty($dado)){
@@ -13,5 +13,5 @@
         $conn->query($sqladd);
     }
 
-    header("Location:" . "../view/index.php");
+        header("Location:" . "../../View/Contatos/index.php");
 ?>
