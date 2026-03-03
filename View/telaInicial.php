@@ -1,3 +1,43 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$tempoLimite = 86400; // 24 horas
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit();
+}
+
+if (isset($_SESSION['ultimo_acesso'])) {
+    $tempoPassado = time() - $_SESSION['ultimo_acesso'];
+
+    if ($tempoPassado > $tempoLimite) {
+        session_destroy();
+        header("Location: index.php?erro=tempo");
+        exit();
+    }
+}
+
+$_SESSION['ultimo_acesso'] = time(); // atualiza o tempo
+?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Se não estiver logado volta pro login
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit;
+}
+
+// Hora certa
+date_default_timezone_set("America/Sao_Paulo");
+$hora = date("H");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,21 +52,19 @@
 </head>
 
 <body>
-    <?php
-        date_default_timezone_set("America/Sao_Paulo");
-        $hora = date("HH");
-    ?>
-    <h1><?php 
-        if($hora < 12) {
-            echo "<h1> Bom dia! </h1>";
+    <h1>
+        <?php
+        if ($hora < 12) {
+            echo "Bom dia, " . $_SESSION['usuario'] . "!";
         } else if ($hora < 19) {
-            echo "<h1> Boa tarde! </h1>";
+            echo "Boa tarde, " . $_SESSION['usuario'] . "!";
         } else {
-            echo "<h1> Boa noite! </h1>";
-        };
-    ?></h1>
+            echo "Boa noite, " . $_SESSION['usuario'] . "!";
+        }
+        ?>
+    </h1>
     <br>
-    <p>Selecione o que deseja:   </p>
+    <p>Selecione o que deseja: </p>
 
     <div class="container">
         <a href="./Contatos/" class="card">

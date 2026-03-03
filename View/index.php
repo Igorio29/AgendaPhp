@@ -80,18 +80,20 @@
             gap: 5px;
             align-items: center;
         }
-        .registro{
+
+        .registro {
             color: white;
             font-size: 15px;
         }
 
-        .registro a{
+        .registro a {
             text-decoration: none;
             color: #4a90e2;
         }
-        .registro a:hover{
+
+        .registro a:hover {
             text-decoration: none;
-            color:rgb(4, 97, 202);
+            color: rgb(4, 97, 202);
         }
     </style>
 </head>
@@ -99,12 +101,21 @@
 <body>
 
     <div class="login-container">
+
+        <?php
+        $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+
+        if (isset($_GET['erro'])) {
+            echo "<div class='erro'>Email ou senha inválidos</div>";
+        }
+        ?>
         <h2>Login</h2>
 
         <form action="../controllers/login/login.php" method="POST">
             <div class="form-group">
                 <label for="email">Usuário</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" name="email" placeholder="Email" required
+                    value="<?php echo $email; ?>">
             </div>
 
             <div class="form-group">
@@ -117,9 +128,9 @@
 
         <div class="footer">
             Sistema de Login <br>
-            <div class="registro"> 
-                Não tem conta?
-                <a href="./RegistroUsuario/index.php" class="cadastrar">Registre aqui</a>
+            <div class="registro">
+                <a href="./RegistroUsuario/index.php"
+                    class="cadastrar"> Não tem conta? Registre aqui</a>
             </div>
         </div>
     </div>
