@@ -105,22 +105,29 @@
         <?php
         $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
 
-        if (isset($_GET['erro'])) {
-            echo "<div class='erro'>Email ou senha inválidos</div>";
-        }
+        if (isset($_GET['erro'])){
+            if ($_GET['erro'] == 1){
+            echo "<div class='erro'>Senha incorreta!</div>";
+            }
+        };
+        if (isset($_GET['erro'])){
+            if ($_GET['erro'] == 2){
+            echo "<div class='erro'>Email não cadastrado</div>";
+            }
+        };
         ?>
         <h2>Login</h2>
 
         <form action="../controllers/login/login.php" method="POST">
             <div class="form-group">
-                <label for="email">Usuário</label>
-                <input type="email" name="email" placeholder="Email" required
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Email" id="email" required
                     value="<?php echo $email; ?>">
             </div>
 
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" required>
+                <input type="password" id="senha" name="senha" placeholder="Senha" required>
             </div>
 
             <button type="submit">Entrar</button>

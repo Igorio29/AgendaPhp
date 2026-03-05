@@ -14,7 +14,7 @@
     }
 
     $senhaCripto = password_hash($senha, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO TAB_usuario VALUES (NULL, '$nome', '$email', '$senhaCripto', NULL)";
+    $sql = "INSERT INTO tab_usuario VALUES (NULL, '$nome', '$email', '$senhaCripto', NULL)";
     $conn->query($sql);
 
     header("location:"."../../View/index.php");

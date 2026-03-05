@@ -12,7 +12,7 @@
             $t=$dado["tel"];
             $d=$dado["obs"];
         
-            $sqladd = "INSERT INTO TAB_contatos VALUES(NULL,'$n', '$t','$d')";
+            $sqladd = "INSERT INTO tab_contatos VALUES(NULL,'$n', '$t','$d')";
             $conn->query($sqladd);
             
         header("Location:" . "../../View/Contatos/index.php");

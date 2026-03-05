@@ -9,7 +9,7 @@
         $t=$dado["tel"];
         $d=$dado["obs"];
         
-        $sqladd = "UPDATE TAB_contatos SET nome = '$n', tel = '$t', obs = '$d' WHERE id = '$id'";
+        $sqladd = "UPDATE tab_contatos SET nome = '$n', tel = '$t', obs = '$d' WHERE id = '$id'";
         $conn->query($sqladd);
     }
 

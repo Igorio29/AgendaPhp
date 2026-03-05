@@ -121,22 +121,22 @@
         <form action="../../controllers/registro/registro.php" method="POST">
             <div class="form-group">
                 <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" required value="<?php echo $usuario; ?>">
+                <input type="text" name="usuario" placeholder="Nome Completo" required value="<?php echo $usuario; ?>">
             </div>
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" name="email" required value="<?php echo $email; ?>">
+                <input type="email" name="email" placeholder="email@email.com" required value="<?php echo $email; ?>">
             </div>
 
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" required>
+                <input type="password" id="senha" placeholder="Escreva a Senha" name="senha" required>
             </div>
 
             <div class="form-group">
                 <label for="confirmar">Confirmar Senha</label>
-                <input type="password" id="confirmar" name="confirmar" required>
+                <input type="password" id="confirmar" placeholder="Confirmar a Senha" name="confirmar" required>
             </div>
 
 
