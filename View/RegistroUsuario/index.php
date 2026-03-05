@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login do Sistema</title>
+    <title>Registro</title>
     <style>
         body {
             margin: 0;
@@ -16,16 +16,16 @@
             align-items: center;
         }
 
-        .login-container {
+        .registro-container {
             background: black;
             color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            width: 300px;
+            width: 320px;
         }
 
-        .login-container h2 {
+        .registro-container h2 {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -57,7 +57,7 @@
             width: 100%;
             padding: 10px;
             border: none;
-            background: rgb(0, 104, 201);
+            background: #4a90e2;
             color: white;
             font-size: 16px;
             border-radius: 5px;
@@ -65,7 +65,7 @@
         }
 
         button:hover {
-            background: rgb(0, 32, 65);
+            background: #357abd;
         }
 
         .footer {
@@ -75,70 +75,80 @@
             color: #666;
         }
 
-        .registro-link {
-            display: flex;
-            gap: 5px;
-            align-items: center;
+        .link-login {
+            text-align: center;
+            margin-top: 10px;
         }
 
-        .registro {
-            color: white;
-            font-size: 15px;
-        }
-
-        .registro a {
+        .link-login a {
             text-decoration: none;
             color: #4a90e2;
+            font-size: 14px;
         }
 
-        .registro a:hover {
-            text-decoration: none;
-            color: rgb(4, 97, 202);
+        .link-login a:hover {
+            text-decoration: underline;
+        }
+
+        .erro {
+            background-color: #ffdddd;
+            color: #a30000;
+            border: 1px solid #ff5c5c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-container">
-
+    <div class="registro-container">
         <?php
+        $usuario = isset($_GET['usuario']) ? htmlspecialchars($_GET['usuario']) : '';
         $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
-
-        if (isset($_GET['erro'])){
-            if ($_GET['erro'] == 1){
-            echo "<div class='erro'>Senha incorreta!</div>";
-            }
-        };
-        if (isset($_GET['erro'])){
-            if ($_GET['erro'] == 2){
-            echo "<div class='erro'>Email não cadastrado</div>";
-            }
-        };
         ?>
-        <h2>Login</h2>
+        <?php
+        if (isset($_GET['1'])) {
+            echo "<div class='erro'>As senhas não coincidem!</div>";
+        }
+        ?>
+        <h2>Registro</h2>
 
-        <form action="../controllers/login/login.php" method="POST">
+
+        <form action="../../controllers/registro/registro.php" method="POST">
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" name="email" placeholder="Email" id="email" required
-                    value="<?php echo $email; ?>">
+                <label for="usuario">Usuário</label>
+                <input type="text" name="usuario" placeholder="Nome Completo" required value="<?php echo $usuario; ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" placeholder="email@email.com" required value="<?php echo $email; ?>">
             </div>
 
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                <input type="password" id="senha" placeholder="Escreva a Senha" name="senha" required>
             </div>
 
-            <button type="submit">Entrar</button>
+            <div class="form-group">
+                <label for="confirmar">Confirmar Senha</label>
+                <input type="password" id="confirmar" placeholder="Confirmar a Senha" name="confirmar" required>
+            </div>
+
+
+            <button type="submit">Cadastrar</button>
         </form>
 
+        <div class="link-login">
+            <a href="../index.php">Já tem conta? Fazer login</a>
+        </div>
+
         <div class="footer">
-            Sistema de Login <br>
-            <div class="registro">
-                <a href="./RegistroUsuario/index.php"
-                    class="cadastrar"> Não tem conta? Registre aqui</a>
-            </div>
+            Sistema de Cadastro
         </div>
     </div>
 

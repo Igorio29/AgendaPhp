@@ -1,3 +1,26 @@
+<?php
+session_start();
+
+$tempoLimite = 86400; // 24 horas
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit();
+}
+
+if (isset($_SESSION['ultimo_acesso'])) {
+    $tempoPassado = time() - $_SESSION['ultimo_acesso'];
+
+    if ($tempoPassado > $tempoLimite) {
+        session_destroy();
+        header("Location: index.php?erro=tempo");
+        exit();
+    }
+}
+
+$_SESSION['ultimo_acesso'] = time(); // atualiza o tempo
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +40,7 @@
         <?php
         include("../../conect.php");
         $id = $_GET['Id'];
-        $sql = "SELECT * FROM contatos WHERE id=$id";
+        $sql = "SELECT * FROM tab_contatos WHERE id=$id";
         $result = $conn->query($sql);
         $i = $result->fetch_assoc();
         ?>

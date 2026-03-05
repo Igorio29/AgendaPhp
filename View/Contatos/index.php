@@ -1,4 +1,27 @@
 <?php
+session_start();
+
+$tempoLimite = 86400; // 24 horas
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit();
+}
+
+if (isset($_SESSION['ultimo_acesso'])) {
+    $tempoPassado = time() - $_SESSION['ultimo_acesso'];
+
+    if ($tempoPassado > $tempoLimite) {
+        session_destroy();
+        header("Location: index.php?erro=tempo");
+        exit();
+    }
+}
+
+$_SESSION['ultimo_acesso'] = time(); // atualiza o tempo
+?>
+
+<?php
 include("../../controllers/contatos/getContatos.php");
 
 $nome = $_GET['busca'] ?? null;
@@ -18,10 +41,10 @@ if ($nome) {
     $limite = 10;
     $offset = ($pagina - 1) * $limite;
 
-    $sql = "SELECT * FROM contatos LIMIT $limite OFFSET $offset";
+    $sql = "SELECT * FROM tab_contatos LIMIT $limite OFFSET $offset";
 
     // contar total de registros
-    $resultTotal = $conn->query("SELECT COUNT(*) as total FROM contatos");
+    $resultTotal = $conn->query("SELECT COUNT(*) as total FROM tab_contatos");
     $total = $resultTotal->fetch_assoc()['total'];
     $totalPaginas = ceil($total / $limite);
 }
